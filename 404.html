@@ -4,11 +4,10 @@
 <head>
     <meta charset="utf-8">
     <title>Redirecting…</title>
-    <meta http-equiv="refresh" content="0; url=/" />
     <script>
-        // GitHub Pages SPA redirect
-        var redirect = window.location.pathname;
-        window.location.replace("/" + "#" + redirect);
+        // Preserve path + query when redirecting
+        var redirect = window.location.pathname + window.location.search + window.location.hash;
+        window.location.replace("/index.html?redirect=" + encodeURIComponent(redirect));
     </script>
 </head>
 
