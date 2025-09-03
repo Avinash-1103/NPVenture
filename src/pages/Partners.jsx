@@ -6,7 +6,7 @@ const PARTNERS = {
     { name: "Tata AIG General Insurance", logo: "/logos/tata-aig.svg" },
     { name: "ICICI Lombard", logo: "/logos/icici-lombard.svg" },
     { name: "Star Health Insurance", logo: "/logos/starhealth.svg" },
-    { name: "Reliance General Insurance", logo: "/logos/reliance.svg" },
+    { name: "Reliance General Insurance", logo: "/logos/reliance.webp" },
   ],
   "Life Insurance": [
     { name: "Tata AIA", logo: "/logos/tata-aia.svg" },
