@@ -31,9 +31,6 @@ const PARTNERS = {
     { name: "ICICI Lombard", logo: "/logos/ICICI-Lombard.png" },
     { name: "HDFC Ergo", logo: "/logos/hdfcergo.jpg" },
   ],
-  "Business Insurance": [
-    { name: "Keyman Insurance", logo: "/logos/keyman.svg" },
-  ],
 };
 
 export default function Partners() {
