@@ -9,16 +9,16 @@ const PARTNERS = {
     { name: "Reliance General Insurance", logo: "/logos/reliance.webp" },
   ],
   "Life Insurance": [
-    { name: "Tata AIA", logo: "/logos/tata-aia.svg" },
+    { name: "Tata AIA", logo: "/logos/tataaia.svg" },
     { name: "LIC", logo: "/logos/lic.svg" },
   ],
   "Motor Insurance": [
     { name: "Tata AIG", logo: "/logos/tata-aig.svg" },
-    { name: "ICICI Lombard", logo: "/logos/icici-lombard.svg" },
+    { name: "ICICI Lombard", logo: "/logos/icici-lombard.png" },
     { name: "Chola MS", logo: "/logos/chola.svg" },
     { name: "Go Digit", logo: "/logos/godigit.svg" },
     { name: "Future Generali", logo: "/logos/future-generali.svg" },
-    { name: "HDFC Ergo", logo: "/logos/hdfc-ergo.svg" },
+    { name: "HDFC Ergo", logo: "/logos/hdfc_ergo.svg" },
     { name: "Bajaj Allianz", logo: "/logos/bajaj.svg" },
     { name: "SBI General", logo: "/logos/sbi-general.svg" },
     { name: "New India Assurance", logo: "/logos/newindia.svg" },
@@ -28,8 +28,8 @@ const PARTNERS = {
   ],
   "SME Insurance": [
     { name: "Tata AIG", logo: "/logos/tata-aig.svg" },
-    { name: "ICICI Lombard", logo: "/logos/icici-lombard.svg" },
-    { name: "HDFC Ergo", logo: "/logos/hdfc-ergo.svg" },
+    { name: "ICICI Lombard", logo: "/logos/icici-lombard.png" },
+    { name: "HDFC Ergo", logo: "/logos/hdfc_ergo.svg" },
   ],
   "Business Insurance": [
     { name: "Keyman Insurance", logo: "/logos/keyman.svg" },
