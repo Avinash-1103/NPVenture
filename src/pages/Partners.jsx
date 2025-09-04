@@ -4,7 +4,7 @@ const PARTNERS = {
   "Health Insurance": [
     { name: "Care Health Insurance", logo: "/logos/care.svg" },
     { name: "Tata AIG General Insurance", logo: "/logos/tata-aig.svg" },
-    { name: "ICICI Lombard", logo: "/logos/ICICI Lombard GIC_idlwpVghRG_0.png" },
+    { name: "ICICI Lombard", logo: "/logos/ICICI-Lombard.png" },
     { name: "Star Health Insurance", logo: "/logos/starhealth.svg" },
     { name: "Reliance General Insurance", logo: "/logos/reliance.webp" },
   ],
@@ -14,7 +14,7 @@ const PARTNERS = {
   ],
   "Motor Insurance": [
     { name: "Tata AIG", logo: "/logos/tata-aig.svg" },
-    { name: "ICICI Lombard", logo: "/logos/ICICI Lombard GIC_idlwpVghRG_0.png" },
+    { name: "ICICI Lombard", logo: "/logos/ICICI-Lombard.png" },
     { name: "Chola MS", logo: "/logos/chola.svg" },
     { name: "Go Digit", logo: "/logos/godigit.svg" },
     { name: "Future Generali", logo: "/logos/future-generali.svg" },
@@ -28,7 +28,7 @@ const PARTNERS = {
   ],
   "SME Insurance": [
     { name: "Tata AIG", logo: "/logos/tata-aig.svg" },
-    { name: "ICICI Lombard", logo: "/logos/ICICI Lombard GIC_idlwpVghRG_0.png" },
+    { name: "ICICI Lombard", logo: "/logos/ICICI-Lombard.png" },
     { name: "HDFC Ergo", logo: "/logos/hdfcergo.jpg" },
   ],
   "Business Insurance": [
