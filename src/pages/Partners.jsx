@@ -18,7 +18,7 @@ const PARTNERS = {
     { name: "Chola MS", logo: "/logos/chola.svg" },
     { name: "Go Digit", logo: "/logos/godigit.svg" },
     { name: "Future Generali", logo: "/logos/future-generali.svg" },
-    { name: "HDFC Ergo", logo: "/logos/hdfcergo.png" },
+    { name: "HDFC Ergo", logo: "/logos/hdfcergo.jpg" },
     { name: "Bajaj Allianz", logo: "/logos/bajaj.svg" },
     { name: "SBI General", logo: "/logos/sbi-general.svg" },
     { name: "New India Assurance", logo: "/logos/newindia.svg" },
@@ -29,7 +29,7 @@ const PARTNERS = {
   "SME Insurance": [
     { name: "Tata AIG", logo: "/logos/tata-aig.svg" },
     { name: "ICICI Lombard", logo: "/logos/icici-lombard.png" },
-    { name: "HDFC Ergo", logo: "/logos/hdfcergo.png" },
+    { name: "HDFC Ergo", logo: "/logos/hdfcergo.jpg" },
   ],
   "Business Insurance": [
     { name: "Keyman Insurance", logo: "/logos/keyman.svg" },
