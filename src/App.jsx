@@ -29,7 +29,7 @@ export default function App() {
       <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-slate-100">
         <div className="container flex items-center justify-between py-3">
           <NavLink to="/" className="flex items-center gap-2">
-            <div className="h-9 w-9 rounded-2xl bg-gradient-to-br from-sky-400 to-blue-600 grid place-items-center text-white font-bold">TC</div>
+            <div className="h-9 w-9 rounded-2xl bg-gradient-to-br from-sky-400 to-blue-600 grid place-items-center text-white font-bold">NP</div>
             <span className="text-lg font-semibold text-slate-800">NPVenture</span>
           </NavLink>
           <nav className="hidden md:flex items-center gap-6">
@@ -60,7 +60,7 @@ export default function App() {
         <div className="container py-10 grid md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <div className="h-9 w-9 rounded-2xl bg-gradient-to-br from-sky-400 to-blue-600 grid place-items-center text-white font-bold">TC</div>
+              <div className="h-9 w-9 rounded-2xl bg-gradient-to-br from-sky-400 to-blue-600 grid place-items-center text-white font-bold">NP</div>
               <span className="text-lg font-semibold">NPVenture</span>
             </div>
             <p className="text-slate-600 text-sm">Your one-stop solution for all insurance needs across India. Compare, choose, and get claim support.</p>
@@ -77,7 +77,7 @@ export default function App() {
             <h4 className="font-semibold text-slate-900 mb-3">Contact</h4>
             <ul className="text-sm text-slate-600 space-y-1">
               <li>Phone: +91 90967 68607</li>
-              <li>Email: support@trustedcover.in</li>
+              <li>Email: support@NPVenture.in</li>
               <li>Address: 123 Corporate Park, Pune, MH</li>
             </ul>
           </div>

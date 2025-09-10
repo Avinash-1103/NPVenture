@@ -8,8 +8,8 @@ export default function About(){
           <h2 className="text-3xl font-bold text-slate-900">About Us</h2>
           <p className="text-slate-600">We are a team of IRDAI-licensed advisors helping individuals and businesses choose the right policies and get hassle-free claim support. We partner with all major insurers in India to bring unbiased comparisons and guidance.</p>
           <div className="grid sm:grid-cols-3 gap-4">
-            <div className="card p-4"><div className="text-2xl font-bold text-brand-700">10+</div><div className="text-slate-600 text-sm">Years Experience</div></div>
-            <div className="card p-4"><div className="text-2xl font-bold text-brand-700">30+</div><div className="text-slate-600 text-sm">Insurer Partners</div></div>
+            <div className="card p-4"><div className="text-2xl font-bold text-brand-700">5+</div><div className="text-slate-600 text-sm">Years Experience</div></div>
+            <div className="card p-4"><div className="text-2xl font-bold text-brand-700">20+</div><div className="text-slate-600 text-sm">Insurer Partners</div></div>
             <div className="card p-4"><div className="text-2xl font-bold text-brand-700">5k+</div><div className="text-slate-600 text-sm">Claims Assisted</div></div>
           </div>
         </motion.div>
