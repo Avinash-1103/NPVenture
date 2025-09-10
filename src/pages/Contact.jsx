@@ -37,7 +37,7 @@ export default function Contact(){
       <div className="container grid md:grid-cols-2 gap-10 items-start">
         <div>
           <h2 className="text-3xl font-bold text-slate-900">Contact Us</h2>
-          <p className="text-slate-600 mt-2">Fill the form and our agent will reach out. You can also email <a className="text-brand-700 underline" href="mailto:support@trustedcover.in">support@trustedcover.in</a> or call +91 98765 43210.</p>
+          <p className="text-slate-600 mt-2">Fill the form and our agent will reach out. You can also email <a className="text-brand-700 underline" href="mailto:support@trustedcover.in">support@NPVenture.in</a> or call +91 90967 68607.</p>
           <form ref={formRef} onSubmit={onSubmit} className="card p-6 mt-6 space-y-4">
             <div>
               <label className="label">Name</label>
@@ -76,7 +76,7 @@ export default function Contact(){
             <h3 className="text-lg font-semibold">Office</h3>
             <p className="text-slate-600 text-sm mt-2">
               123 Corporate Park, Baner, Pune, Maharashtra 411045<br/>
-              Phone: +91 98765 43210
+              Phone: +91 90967 68607
             </p>
           </div>
         </div>
