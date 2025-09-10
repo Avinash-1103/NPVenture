@@ -77,8 +77,8 @@ export default function App() {
             <h4 className="font-semibold text-slate-900 mb-3">Contact</h4>
             <ul className="text-sm text-slate-600 space-y-1">
               <li>Phone: +91 90967 68607</li>
-              <li>Email: support@NPVenture.in</li>
-              <li>Address: 123 Corporate Park, Pune, MH</li>
+              <li>Email: npventure.official@gmail.com</li>
+              <li>Address: Shop No.7, Payal Apartment, Bharti Vidyapeeth Dattanagar Road,Katraj Ambegaon BK Pune, MH</li>
             </ul>
           </div>
           <div>

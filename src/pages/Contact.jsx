@@ -78,7 +78,7 @@ export default function Contact() {
               className="text-brand-700 underline"
               href="mailto:support@NPVenture.in"
             >
-              support@NPVenture.in
+              npventure.official@gmail.com
             </a>{" "}
             or call +91 90967 68607.
           </p>
@@ -184,7 +184,7 @@ export default function Contact() {
           <div className="card p-6 mt-6">
             <h3 className="text-lg font-semibold">Office</h3>
             <p className="text-slate-600 text-sm mt-2">
-              123 Corporate Park, Baner, Pune, Maharashtra 411045
+              Shop No.7, Payal Apartment, Bharti Vidyapeeth Dattanagar Road,Katraj Ambegaon BK Pune, MH
               <br />
               Phone: +91 90967 68607
             </p>
