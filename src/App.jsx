@@ -23,14 +23,14 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col">
       <Helmet>
-        <title>TrustedCover — Insurance & Claims Assistance</title>
+        <title>NPVenture — Insurance & Claims Assistance</title>
       </Helmet>
 
       <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-slate-100">
         <div className="container flex items-center justify-between py-3">
           <NavLink to="/" className="flex items-center gap-2">
             <div className="h-9 w-9 rounded-2xl bg-gradient-to-br from-sky-400 to-blue-600 grid place-items-center text-white font-bold">TC</div>
-            <span className="text-lg font-semibold text-slate-800">TrustedCover</span>
+            <span className="text-lg font-semibold text-slate-800">NPVenture</span>
           </NavLink>
           <nav className="hidden md:flex items-center gap-6">
             {nav.map((n)=> (
@@ -61,7 +61,7 @@ export default function App() {
           <div>
             <div className="flex items-center gap-2 mb-3">
               <div className="h-9 w-9 rounded-2xl bg-gradient-to-br from-sky-400 to-blue-600 grid place-items-center text-white font-bold">TC</div>
-              <span className="text-lg font-semibold">TrustedCover</span>
+              <span className="text-lg font-semibold">NPVenture</span>
             </div>
             <p className="text-slate-600 text-sm">Your one-stop solution for all insurance needs across India. Compare, choose, and get claim support.</p>
           </div>
@@ -76,7 +76,7 @@ export default function App() {
           <div>
             <h4 className="font-semibold text-slate-900 mb-3">Contact</h4>
             <ul className="text-sm text-slate-600 space-y-1">
-              <li>Phone: +91 98765 43210</li>
+              <li>Phone: +91 90967 68607</li>
               <li>Email: support@trustedcover.in</li>
               <li>Address: 123 Corporate Park, Pune, MH</li>
             </ul>
@@ -90,7 +90,7 @@ export default function App() {
           </div>
         </div>
         <div className="border-t border-slate-200 py-4 text-center text-xs text-slate-500">
-          © {new Date().getFullYear()} TrustedCover. All rights reserved.
+          © {new Date().getFullYear()} NPVenture. All rights reserved.
         </div>
       </footer>
     </div>
