@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Route, Routes, NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { FaWhatsapp } from "react-icons/fa";
 import { Menu, X } from "lucide-react";
 import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
@@ -23,6 +24,13 @@ const nav = [
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // WhatsApp sticky button link
+  const phoneNumber = "919096768607";
+  const defaultMessage = "Hello, I have a query.";
+  const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+    defaultMessage
+  )}`;
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -99,6 +107,18 @@ export default function App() {
           <Route path="/faqs" element={<FAQs />} />
         </Routes>
       </main>
+
+      {/* Sticky WhatsApp Button */}
+      <a
+        href={whatsappLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-5 right-5 bg-green-600 hover:bg-green-700 text-white rounded-full p-4 shadow-lg flex items-center justify-center z-50"
+        style={{ width: "60px", height: "60px" }}
+        title="Chat on WhatsApp"
+      >
+        <FaWhatsapp size={28} />
+      </a>
 
       {/* Footer */}
       <footer className="border-t border-slate-200 bg-white">
