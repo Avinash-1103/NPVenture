@@ -5,30 +5,18 @@ export default function Contact() {
   const formRef = useRef(null);
   const [status, setStatus] = useState({ state: "idle", message: "" });
 
-  // Build WhatsApp link with user-filled form data
   const buildWhatsAppLink = () => {
     const base = "https://wa.me/919096768607";
-
-    if (!formRef.current) {
-      return `${base}?text=Hello, I have a query.`;
-    }
-
+    if (!formRef.current) return `${base}?text=Hello, I have a query.`;
     const data = new FormData(formRef.current);
     let parts = [];
-
     for (const [k, v] of data.entries()) {
-      if (v.trim()) {
-        // Skip insuranceType if default option is selected
-        if (k === "insuranceType" && v === "Choose Insurance Type") continue;
+      if (v.trim() && !(k === "insuranceType" && v === "Choose Insurance Type"))
         parts.push(`${k}: ${v}`);
-      }
     }
-
-    if (parts.length === 0) {
-      return `${base}?text=Hello, I have a query.`;
-    }
-
-    return `${base}?text=${encodeURIComponent(parts.join("\n"))}`;
+    return parts.length === 0
+      ? `${base}?text=Hello, I have a query.`
+      : `${base}?text=${encodeURIComponent(parts.join("\n"))}`;
   };
 
   const onSubmit = async (e) => {
@@ -38,7 +26,6 @@ export default function Contact() {
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
     if (!serviceId || !templateId || !publicKey) {
-      // fallback: open mailto draft with form data
       const data = new FormData(formRef.current);
       const params = new URLSearchParams();
       for (const [k, v] of data.entries()) params.append(k, v);
@@ -52,78 +39,71 @@ export default function Contact() {
     try {
       setStatus({ state: "loading", message: "Sending..." });
       await emailjs.sendForm(serviceId, templateId, formRef.current, publicKey);
-      setStatus({
-        state: "success",
-        message: "Thanks! We’ll get back to you shortly.",
-      });
+      setStatus({ state: "success", message: "Thanks! We’ll get back to you shortly." });
       formRef.current.reset();
     } catch (err) {
       console.error(err);
       setStatus({
         state: "error",
-        message:
-          "Something went wrong. Please try again or use the email link.",
+        message: "Something went wrong. Please try again or use the email link.",
       });
     }
   };
 
   return (
-    <section className="section">
+    <section className="section transition-colors duration-300">
       <div className="container grid md:grid-cols-2 gap-10 items-start">
         <div>
-          <h2 className="text-3xl font-bold text-slate-900">Contact Us</h2>
-          <p className="text-slate-600 mt-2">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Contact Us</h2>
+          <p className="text-gray-600 dark:text-gray-300 mt-2">
             Fill the form and our agent will reach out. You can also email{" "}
-            <a
-              className="text-brand-700 underline"
-              href="mailto:support@NPVenture.in"
-            >
+            <a className="text-brand-700 underline" href="mailto:npventure.official@gmail.com">
               npventure.official@gmail.com
             </a>{" "}
             or call +91 90967 68607.
           </p>
 
-          <form
-            ref={formRef}
-            onSubmit={onSubmit}
-            className="card p-6 mt-6 space-y-4"
-          >
+          <form ref={formRef} onSubmit={onSubmit} className="card p-6 mt-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 space-y-4 rounded-xl">
             <div>
-              <label className="label">Name</label>
+              <label className="label text-gray-900 dark:text-white">Name</label>
               <input
                 name="name"
                 required
-                className="input"
+                className="input dark:bg-gray-700 dark:text-white dark:placeholder-gray-300"
                 placeholder="Your full name"
               />
             </div>
 
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
-                <label className="label">Email</label>
+                <label className="label text-gray-900 dark:text-white">Email</label>
                 <input
                   type="email"
                   name="email"
                   required
-                  className="input"
+                  className="input dark:bg-gray-700 dark:text-white dark:placeholder-gray-300"
                   placeholder="you@example.com"
                 />
               </div>
               <div>
-                <label className="label">Phone</label>
+                <label className="label text-gray-900 dark:text-white">Phone</label>
                 <input
                   type="tel"
                   name="phone"
                   required
-                  className="input"
+                  className="input dark:bg-gray-700 dark:text-white dark:placeholder-gray-300"
                   placeholder="+91 XXXXX XXXXX"
                 />
               </div>
             </div>
 
             <div>
-              <label className="label">Insurance Type</label>
-              <select name="insuranceType" className="input" defaultValue="Choose Insurance Type">
+              <label className="label text-gray-900 dark:text-white">Insurance Type</label>
+              <select
+                name="insuranceType"
+                className="input dark:bg-gray-700 dark:text-white dark:placeholder-gray-300"
+                defaultValue="Choose Insurance Type"
+              >
                 <option disabled>Choose Insurance Type</option>
                 <option>Life</option>
                 <option>Health</option>
@@ -136,16 +116,15 @@ export default function Contact() {
             </div>
 
             <div>
-              <label className="label">Message</label>
+              <label className="label text-gray-900 dark:text-white">Message</label>
               <textarea
                 name="message"
                 rows="4"
-                className="input"
+                className="input dark:bg-gray-700 dark:text-white dark:placeholder-gray-300"
                 placeholder="Tell us about your requirement"
               ></textarea>
             </div>
 
-            {/* EmailJS Submit Button */}
             <button
               disabled={status.state === "loading"}
               className="btn btn-primary w-full"
@@ -153,14 +132,12 @@ export default function Contact() {
               {status.state === "loading" ? "Sending..." : "Send Message"}
             </button>
 
-            {/* OR Divider */}
             <div className="flex items-center my-2">
-              <hr className="flex-grow border-slate-300" />
-              <span className="px-2 text-slate-500 text-sm">OR</span>
-              <hr className="flex-grow border-slate-300" />
+              <hr className="flex-grow border-gray-300 dark:border-gray-600" />
+              <span className="px-2 text-gray-500 dark:text-gray-400 text-sm">OR</span>
+              <hr className="flex-grow border-gray-300 dark:border-gray-600" />
             </div>
 
-            {/* WhatsApp Button */}
             <button
               type="button"
               onClick={() => window.open(buildWhatsAppLink(), "_blank")}
@@ -171,33 +148,30 @@ export default function Contact() {
 
             {status.message && (
               <p
-                className={`text-sm ${status.state === "success"
-                    ? "text-green-600"
-                    : "text-red-600"
-                  }`}
+                className={`text-sm ${status.state === "success" ? "text-green-600" : "text-red-600"}`}
               >
                 {status.message}
               </p>
             )}
           </form>
 
-          <div className="card p-6 mt-6">
-            <h3 className="text-lg font-semibold">Office</h3>
-            <p className="text-slate-600 text-sm mt-2">
-              Shop No.7, Payal Apartment, Bharti Vidyapeeth Dattanagar Road,Katraj Ambegaon BK Pune, MH
+          <div className="card p-6 mt-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Office</h3>
+            <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
+              Shop No.7, Payal Apartment, Bharti Vidyapeeth Dattanagar Road, Katraj Ambegaon BK Pune, MH
               <br />
               Phone: +91 90967 68607
             </p>
           </div>
         </div>
 
-        <div className="card p-6">
+        <div className="card p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl">
           <iframe
             title="Map"
             className="w-full h-80 rounded-xl"
             src="https://www.openstreetmap.org/export/embed.html?bbox=73.758%2C18.548%2C73.82%2C18.575&layer=mapnik"
           />
-          <p className="text-xs text-slate-500 mt-2">
+          <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
             Approximate service location — pan-India support available.
           </p>
         </div>

@@ -35,22 +35,26 @@ const PARTNERS = {
 
 export default function Partners() {
   return (
-    <section className="py-12 bg-gray-50">
+    <section className="py-12 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-4">
-        <h1 className="text-3xl font-bold text-center mb-8">Our Insurance Partners</h1>
-        <p className="text-center text-gray-600 mb-10">
+        <h1 className="text-3xl font-bold text-center mb-8 text-gray-900 dark:text-white">
+          Our Insurance Partners
+        </h1>
+        <p className="text-center text-gray-600 dark:text-gray-300 mb-10">
           We work with India’s leading insurance providers across multiple sectors.
         </p>
 
         {Object.entries(PARTNERS).map(([category, companies]) => (
           <div key={category} className="mb-12">
-            <h2 className="text-2xl font-semibold mb-6">{category}</h2>
+            <h2 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
+              {category}
+            </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 items-center">
               {companies.map((partner, idx) => (
                 <motion.div
                   key={idx}
                   whileHover={{ scale: 1.05 }}
-                  className="flex justify-center items-center bg-white p-4 rounded-xl shadow hover:shadow-lg transition"
+                  className="flex justify-center items-center bg-white dark:bg-gray-800 p-4 rounded-xl shadow hover:shadow-lg transition"
                 >
                   <img
                     src={partner.logo}
