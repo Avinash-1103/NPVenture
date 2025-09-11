@@ -11,6 +11,7 @@ import Contact from "./pages/Contact.jsx";
 import FAQs from "./pages/FAQs.jsx";
 import WhatsAppButton from "./components/WhatsAppSticky.jsx"; // Sticky WhatsApp
 import { Helmet } from "react-helmet-async";
+import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube, FaWhatsapp } from "react-icons/fa";
 
 // Nav items
 const nav = [
@@ -132,8 +133,10 @@ export default function App() {
       </main>
 
       {/* Footer */}
+      {/* Footer */}
       <footer className="border-t border-slate-200 dark:border-gray-700 bg-white dark:bg-gray-900 transition-colors">
-        <div className="container py-10 grid md:grid-cols-4 gap-8">
+        <div className="container py-10 grid md:grid-cols-2 gap-8">
+          {/* Left side: Logo + tagline + social */}
           <div>
             <div className="flex items-center gap-2 mb-3">
               <div className="h-9 w-9 rounded-2xl bg-gradient-to-br from-sky-400 to-blue-600 grid place-items-center text-white font-bold">
@@ -141,49 +144,88 @@ export default function App() {
               </div>
               <span className="text-lg font-semibold">NPVenture</span>
             </div>
-            <p className="text-slate-600 dark:text-slate-300 text-sm">
+            <p className="text-slate-600 dark:text-slate-300 text-sm mb-4">
               Your one-stop solution for all insurance needs across India. Compare, choose, and get claim support.
             </p>
+
+            {/* Social Icons */}
+            {/* Social Icons */}
+            <div className="flex gap-3 mt-4">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-blue-500 hover:text-white transition"
+              >
+                <FaFacebook className="text-lg" />
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-pink-500 hover:text-white transition"
+              >
+                <FaInstagram className="text-lg" />
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-blue-600 hover:text-white transition"
+              >
+                <FaLinkedin className="text-lg" />
+              </a>
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-red-600 hover:text-white transition"
+              >
+                <FaYoutube className="text-lg" />
+              </a>
+            </div>
           </div>
 
+          {/* Right side: Contact + email form */}
           <div>
-            <h4 className="font-semibold text-slate-900 dark:text-slate-200 mb-3">Explore</h4>
-            <ul className="space-y-2 text-sm">
-              {nav.slice(1, -1).map((n) => (
-                <li key={n.to}>
-                  <NavLink to={n.to} className="text-slate-600 dark:text-slate-300 hover:text-brand-700">
-                    {n.label}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-slate-900 dark:text-slate-200 mb-3">Contact</h4>
-            <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-1">
-              <li>Phone: +91 90967 68607</li>
-              <li>Email: npventure.official@gmail.com</li>
+            <h4 className="font-semibold text-slate-900 dark:text-slate-200 mb-3">CONTACT US</h4>
+            <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-4 mb-8 ">
               <li>
-                Address: Shop No.7, Payal Apartment, Bharti Vidyapeeth Dattanagar Road,
-                Katraj Ambegaon BK Pune, MH
+                <a href="mailto:npventure.official@gmail.com" className="hover:text-blue-500 ">
+                  npventure.official@gmail.com
+                </a>
+              </li>
+              <li>
+                <a href="tel:+919096768607" className="hover:text-blue-500">
+                  +91 90967 68607
+                </a>
               </li>
             </ul>
-          </div>
 
-          <div>
-            <h4 className="font-semibold text-slate-900 dark:text-slate-200 mb-3">Newsletter</h4>
-            <form onSubmit={(e) => e.preventDefault()} className="flex gap-2">
-              <input type="email" required placeholder="Enter your email" className="input dark:bg-gray-700 dark:text-slate-200" />
-              <button className="btn btn-primary">Subscribe</button>
+            {/* Email Input + Button */}
+            <form onSubmit={(e) => e.preventDefault()}>
+              <input
+                type="email"
+                placeholder="Your email for inquiries"
+                className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent focus:outline-none focus:border-blue-500"
+                required
+              />
+              <button
+                type="submit"
+                className="w-60 mt-5 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-3xl font-medium"
+              >
+                Request a Consultation
+              </button>
             </form>
           </div>
         </div>
 
+        {/* Copyright */}
         <div className="border-t border-slate-200 dark:border-gray-700 py-4 text-center text-xs text-slate-500 dark:text-slate-400">
           © {new Date().getFullYear()} NPVenture. All rights reserved.
         </div>
       </footer>
+
 
       {/* Sticky WhatsApp icon */}
       <WhatsAppButton />

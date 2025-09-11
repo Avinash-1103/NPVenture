@@ -35,14 +35,15 @@ export default function Home() {
                 Contact Agent
               </NavLink>
             </div>
-            <ul className="mt-6 grid grid-cols-3 gap-4 text-sm text-slate-600 dark:text-gray-300">
-              <li className="card p-4">Life</li>
-              <li className="card p-4">Health</li>
-              <li className="card p-4">Vehicle</li>
-              <li className="card p-4">Travel</li>
-              <li className="card p-4">Property</li>
-              <li className="card p-4">Business</li>
+            <ul className="mt-6 grid grid-cols-3 gap-4 text-sm">
+              <li className="card p-4 bg-white text-slate-800 dark:bg-gray-800 dark:text-slate-200">Life</li>
+              <li className="card p-4 bg-white text-slate-800 dark:bg-gray-800 dark:text-slate-200">Health</li>
+              <li className="card p-4 bg-white text-slate-800 dark:bg-gray-800 dark:text-slate-200">Vehicle</li>
+              <li className="card p-4 bg-white text-slate-800 dark:bg-gray-800 dark:text-slate-200">Travel</li>
+              <li className="card p-4 bg-white text-slate-800 dark:bg-gray-800 dark:text-slate-200">Property</li>
+              <li className="card p-4 bg-white text-slate-800 dark:bg-gray-800 dark:text-slate-200">Business</li>
             </ul>
+
           </motion.div>
 
           <motion.div
@@ -52,7 +53,7 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-sky-100 to-blue-100 dark:from-gray-700 dark:to-gray-800 border border-sky-200 dark:border-gray-600 p-4">
+            {/* <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-sky-100 to-blue-100 dark:from-gray-700 dark:to-gray-800 border border-sky-200 dark:border-gray-600 p-4">
               <div className="w-full h-full rounded-2xl bg-white dark:bg-gray-800 grid place-items-center text-center p-10">
                 <div>
                   <div className="text-6xl mb-3">🛡️</div>
@@ -64,7 +65,12 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-            </div>
+            </div> */
+              <img
+                src="/agent.jpg" // 👈 place your agent image inside `public/` folder (e.g. public/agent.jpg)
+                alt="Professional Insurance Agent"
+                className="w-full max-w-md rounded-3xl shadow-xl object-cover"
+              />}
           </motion.div>
         </div>
       </section>

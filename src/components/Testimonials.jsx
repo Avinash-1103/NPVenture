@@ -6,13 +6,13 @@ export default function Testimonials(){
   ];
   return (
     <div>
-      <h2 className="text-3xl font-bold text-slate-900">What clients say</h2>
+      <h2 className="text-3xl font-bold text-slate-800 dark:text-slate-200">What clients say</h2>
       <div className="mt-6 grid md:grid-cols-3 gap-6">
         {list.map((x)=> (
-          <div key={x.n} className="card p-6">
-            <div className="font-semibold">{x.n}</div>
-            <div className="text-sm text-slate-500">{x.t}</div>
-            <p className="text-slate-700 mt-3">{x.m}</p>
+          <div key={x.n} className="rounded-xl p-6 shadow bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200">
+            <div className="font-semibold text-slate-900 dark:text-slate-100">{x.n}</div>
+            <div className="text-sm text-slate-500 dark:text-slate-400">{x.t}</div>
+            <p className="mt-2">{x.m}</p>
           </div>
         ))}
       </div>
