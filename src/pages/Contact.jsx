@@ -51,8 +51,9 @@ export default function Contact() {
   };
 
   return (
-    <section className="section transition-colors duration-300">
+    <section className="section transition-colors duration-300 bg-gray-50 dark:bg-gray-900">
       <div className="container grid md:grid-cols-2 gap-10 items-start">
+        {/* Form */}
         <div>
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Contact Us</h2>
           <p className="text-gray-600 dark:text-gray-300 mt-2">
@@ -63,7 +64,7 @@ export default function Contact() {
             or call +91 90967 68607.
           </p>
 
-          <form ref={formRef} onSubmit={onSubmit} className="card p-6 mt-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 space-y-4 rounded-xl">
+          <form ref={formRef} onSubmit={onSubmit} className="card p-6 mt-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 space-y-4 rounded-xl shadow hover:shadow-lg transition">
             <div>
               <label className="label text-gray-900 dark:text-white">Name</label>
               <input
@@ -155,7 +156,8 @@ export default function Contact() {
             )}
           </form>
 
-          <div className="card p-6 mt-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl">
+          {/* Office Info */}
+          <div className="card p-6 mt-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow hover:shadow-lg transition">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Office</h3>
             <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
               Shop No.7, Payal Apartment, Bharti Vidyapeeth Dattanagar Road, Katraj Ambegaon BK Pune, MH
@@ -165,7 +167,8 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="card p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl">
+        {/* Map */}
+        <div className="card p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow hover:shadow-lg transition">
           <iframe
             title="Map"
             className="w-full h-80 rounded-xl"

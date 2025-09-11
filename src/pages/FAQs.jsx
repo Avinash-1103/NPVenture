@@ -8,15 +8,13 @@ export default function FAQs() {
   ];
 
   return (
-    <section className="section transition-colors duration-300">
+    <section className="section transition-colors duration-300 bg-gray-50 dark:bg-gray-900">
       <div className="container">
         <h2 className="text-3xl font-bold text-gray-900 dark:text-white">FAQs</h2>
         <div className="mt-6 divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700">
           {faqs.map((f, i) => (
-            <details key={i} className="p-6">
-              <summary className="cursor-pointer font-semibold text-gray-900 dark:text-white">
-                {f.q}
-              </summary>
+            <details key={i} className="p-6 hover:bg-gray-50 dark:hover:bg-gray-700 transition rounded-xl cursor-pointer">
+              <summary className="font-semibold text-gray-900 dark:text-white">{f.q}</summary>
               <p className="text-gray-600 dark:text-gray-300 mt-2">{f.a}</p>
             </details>
           ))}

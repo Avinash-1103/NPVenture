@@ -17,19 +17,6 @@ const PARTNERS = {
     { name: "ICICI Lombard", logo: "/logos/ICICI-Lombard.png" },
     { name: "Chola MS", logo: "/logos/cholams.png" },
     { name: "Go Digit", logo: "/logos/digit.svg" },
-    { name: "Future Generali", logo: "/logos/future-generali.svg" },
-    { name: "HDFC Ergo", logo: "/logos/hdfcergo.jpg" },
-    { name: "Bajaj Allianz", logo: "/logos/bajaj.svg" },
-    { name: "SBI General", logo: "/logos/sbi.png" },
-    { name: "New India Assurance", logo: "/logos/NIA_logo.png" },
-    { name: "National Insurance", logo: "/logos/national.svg" },
-    { name: "Oriental Insurance", logo: "/logos/oriental.png" },
-    { name: "Reliance Insurance", logo: "/logos/reliance.png" },
-  ],
-  "SME Insurance": [
-    { name: "Tata AIG", logo: "/logos/tata-aig.svg" },
-    { name: "ICICI Lombard", logo: "/logos/ICICI-Lombard.png" },
-    { name: "HDFC Ergo", logo: "/logos/hdfcergo.jpg" },
   ],
 };
 

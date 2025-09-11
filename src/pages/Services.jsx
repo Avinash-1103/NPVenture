@@ -36,7 +36,7 @@ export default function Services({ embed = false }) {
           <button
             key={k}
             onClick={() => setActive(k)}
-            className={`badge ${active === k ? "ring-2 ring-brand-500" : ""} dark:bg-gray-700 dark:text-white`}
+            className={`badge ${active === k ? "ring-2 ring-brand-500" : ""} dark:bg-gray-700 dark:text-white hover:ring-brand-300 transition`}
           >
             {k[0].toUpperCase() + k.slice(1)}
           </button>
@@ -47,7 +47,7 @@ export default function Services({ embed = false }) {
         {filtered.map((c, i) => (
           <motion.div
             key={c.key}
-            className="card p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg"
+            className="card p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow hover:shadow-lg transition"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -55,16 +55,14 @@ export default function Services({ embed = false }) {
           >
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{c.title}</h3>
             <p className="text-gray-600 dark:text-gray-300 mt-2">{c.desc}</p>
-            <a href="/contact" className="btn btn-primary mt-4">Get Quote</a>
+            <a href="/contact" className="btn btn-primary mt-4 w-full">Get Quote</a>
           </motion.div>
         ))}
       </div>
     </div>
   );
 
-  if (embed) {
-    return content;
-  }
+  if (embed) return content;
 
   return (
     <section className="section bg-gray-50 dark:bg-gray-900">
