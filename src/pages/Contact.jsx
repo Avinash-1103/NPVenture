@@ -29,7 +29,7 @@ export default function Contact() {
         payload[key] = value;
       });
 
-      await fetch("https://script.google.com/macros/s/AKfycbxezro87eY_kReRk_Vz4VQDEjA85lbjRMXfP5869MO5fDrTB0YjvROFI4IgigII5T0/exec", {
+      await fetch("https://script.google.com/macros/s/AKfycbyDxm4p6fYMI3KC9gI8KBYQN0G4A6bCv1DqQDGMmQ-ma_bDK2tRnkOSDnrLmigJH6w/exec", {
         method: "POST",
         body: JSON.stringify(payload),
         headers: { "Content-Type": "application/json" },
