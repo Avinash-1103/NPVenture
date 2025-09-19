@@ -1,8 +1,8 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 
-export default function Contact() {
+export default function ContactForm() {
   const formRef = useRef(null);
-  const [status, setStatus] = useState({ state: "idle", message: "" });
+  const [status, setStatus] = useState("");
 
   const buildWhatsAppLink = () => {
     const base = "https://wa.me/919096768607";
@@ -18,37 +18,13 @@ export default function Contact() {
       : `${base}?text=${encodeURIComponent(parts.join("\n"))}`;
   };
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    setStatus({ state: "loading", message: "Sending..." });
-
-    try {
-      const data = new FormData(formRef.current);
-      const payload = {};
-      data.forEach((value, key) => {
-        payload[key] = value;
-      });
-
-      await fetch("https://script.google.com/macros/s/AKfycbyDxm4p6fYMI3KC9gI8KBYQN0G4A6bCv1DqQDGMmQ-ma_bDK2tRnkOSDnrLmigJH6w/exec", {
-        method: "POST",
-        body: JSON.stringify(payload),
-        headers: { "Content-Type": "application/json" },
-      });
-
-      setStatus({
-        state: "success",
-        message: "Thanks! We’ll get back to you shortly.",
-      });
-      formRef.current.reset();
-    } catch (err) {
-      const result = await response.json();
-      console.log(result);
-    }
+  const onSubmit = (e) => {
+    setStatus(""); // clear status; actual submission handled by iframe
   };
 
   return (
-    <section className="section transition-colors duration-300 bg-gray-50 dark:bg-gray-900">
-      <div className="container grid md:grid-cols-2 gap-10 items-start">
+    <section className="section transition-colors duration-300 bg-gray-50 dark:bg-gray-900 py-12">
+      <div className="container mx-auto grid md:grid-cols-2 gap-10 items-start px-4">
         {/* Form */}
         <div>
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
@@ -57,7 +33,7 @@ export default function Contact() {
           <p className="text-gray-600 dark:text-gray-300 mt-2">
             Fill the form and our agent will reach out. You can also email{" "}
             <a
-              className="text-brand-700 underline"
+              className="text-teal-600 underline"
               href="mailto:npventure.official@gmail.com"
             >
               npventure.official@gmail.com
@@ -67,7 +43,10 @@ export default function Contact() {
 
           <form
             ref={formRef}
+            method="POST"
+            action="https://script.google.com/macros/s/AKfycbxhTla0o-jEBTKS4t9f09izZhQ1fBYTq3daiS51SZHCYOX1Q0S8yrcmnKCF1tkJ1Z8U/exec"
             onSubmit={onSubmit}
+            target="hidden_iframe"
             className="card p-6 mt-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 space-y-4 rounded-xl shadow hover:shadow-lg transition"
           >
             <div>
@@ -132,10 +111,10 @@ export default function Contact() {
             </div>
 
             <button
-              disabled={status.state === "loading"}
-              className="btn btn-primary w-full"
+              type="submit"
+              className="btn btn-primary w-full bg-teal-500 hover:bg-teal-600 text-white py-3 rounded-lg transition"
             >
-              {status.state === "loading" ? "Sending..." : "Send Message"}
+              Send Message
             </button>
 
             <div className="flex items-center my-2">
@@ -152,22 +131,21 @@ export default function Contact() {
               Contact on WhatsApp
             </button>
 
-            {status.message && (
-              <p
-                className={`text-sm ${status.state === "success" ? "text-green-600" : "text-red-600"
-                  }`}
-              >
-                {status.message}
-              </p>
-            )}
+            {status && <p className="text-green-600 mt-2 text-center">{status}</p>}
           </form>
+
+          {/* Hidden iframe to prevent page reload */}
+          <iframe
+            name="hidden_iframe"
+            style={{ display: "none" }}
+            onLoad={() => setStatus("Message sent!")}
+          />
 
           {/* Office Info */}
           <div className="card p-6 mt-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow hover:shadow-lg transition">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Office</h3>
             <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
-              Shop No.7, Payal Apartment, Bharti Vidyapeeth Dattanagar Road, Katraj
-              Ambegaon BK Pune, MH
+              Shop No.7, Payal Apartment, Bharti Vidyapeeth Dattanagar Road, Katraj Ambegaon BK Pune, MH
               <br />
               Phone: +91 90967 68607
             </p>
