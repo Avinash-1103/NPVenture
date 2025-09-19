@@ -41,11 +41,8 @@ export default function Contact() {
       });
       formRef.current.reset();
     } catch (err) {
-      console.error(err);
-      setStatus({
-        state: "error",
-        message: "Something went wrong. Please try again.",
-      });
+      const result = await response.json();
+      console.log(result);
     }
   };
 
