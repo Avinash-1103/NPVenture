@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
 
 export default function Contact() {
   const formRef = useRef(null);
@@ -21,31 +20,31 @@ export default function Contact() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-    if (!serviceId || !templateId || !publicKey) {
-      const data = new FormData(formRef.current);
-      const params = new URLSearchParams();
-      for (const [k, v] of data.entries()) params.append(k, v);
-      const subject = encodeURIComponent("New Insurance Enquiry");
-      window.location.href = `mailto:support@trustedcover.in?subject=${subject}&body=${encodeURIComponent(
-        params.toString()
-      )}`;
-      return;
-    }
+    setStatus({ state: "loading", message: "Sending..." });
 
     try {
-      setStatus({ state: "loading", message: "Sending..." });
-      await emailjs.sendForm(serviceId, templateId, formRef.current, publicKey);
-      setStatus({ state: "success", message: "Thanks! We’ll get back to you shortly." });
+      const data = new FormData(formRef.current);
+      const payload = {};
+      data.forEach((value, key) => {
+        payload[key] = value;
+      });
+
+      await fetch("https://script.google.com/macros/s/AKfycbxezro87eY_kReRk_Vz4VQDEjA85lbjRMXfP5869MO5fDrTB0YjvROFI4IgigII5T0/exec", {
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      setStatus({
+        state: "success",
+        message: "Thanks! We’ll get back to you shortly.",
+      });
       formRef.current.reset();
     } catch (err) {
       console.error(err);
       setStatus({
         state: "error",
-        message: "Something went wrong. Please try again or use the email link.",
+        message: "Something went wrong. Please try again.",
       });
     }
   };
@@ -55,16 +54,25 @@ export default function Contact() {
       <div className="container grid md:grid-cols-2 gap-10 items-start">
         {/* Form */}
         <div>
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Contact Us</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+            Contact Us
+          </h2>
           <p className="text-gray-600 dark:text-gray-300 mt-2">
             Fill the form and our agent will reach out. You can also email{" "}
-            <a className="text-brand-700 underline" href="mailto:npventure.official@gmail.com">
+            <a
+              className="text-brand-700 underline"
+              href="mailto:npventure.official@gmail.com"
+            >
               npventure.official@gmail.com
             </a>{" "}
             or call +91 90967 68607.
           </p>
 
-          <form ref={formRef} onSubmit={onSubmit} className="card p-6 mt-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 space-y-4 rounded-xl shadow hover:shadow-lg transition">
+          <form
+            ref={formRef}
+            onSubmit={onSubmit}
+            className="card p-6 mt-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 space-y-4 rounded-xl shadow hover:shadow-lg transition"
+          >
             <div>
               <label className="label text-gray-900 dark:text-white">Name</label>
               <input
@@ -149,7 +157,8 @@ export default function Contact() {
 
             {status.message && (
               <p
-                className={`text-sm ${status.state === "success" ? "text-green-600" : "text-red-600"}`}
+                className={`text-sm ${status.state === "success" ? "text-green-600" : "text-red-600"
+                  }`}
               >
                 {status.message}
               </p>
@@ -160,7 +169,8 @@ export default function Contact() {
           <div className="card p-6 mt-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow hover:shadow-lg transition">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Office</h3>
             <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
-              Shop No.7, Payal Apartment, Bharti Vidyapeeth Dattanagar Road, Katraj Ambegaon BK Pune, MH
+              Shop No.7, Payal Apartment, Bharti Vidyapeeth Dattanagar Road, Katraj
+              Ambegaon BK Pune, MH
               <br />
               Phone: +91 90967 68607
             </p>
