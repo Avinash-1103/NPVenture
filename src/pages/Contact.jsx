@@ -167,8 +167,7 @@ export default function ContactForm() {
               Our Office
             </h3>
             <p className="text-gray-600 dark:text-gray-300 mt-2 text-sm leading-relaxed">
-              Shop No.7, Payal Apartment, Bharti Vidyapeeth Dattanagar Road,
-              Katraj, Ambegaon BK, Pune, MH
+              Sr. No. 26, Office No. 106, Yashwant Complex, Lonkar Wasti, Mundhwa - Manjari Rd, Keshav Nagar, Mundhwa, Pune, Maharashtra 411036
               <br />
               Phone: +91 90967 68607
               <br />

@@ -53,17 +53,25 @@ export default function Home() {
 
           {/* Right Image */}
           <motion.div
+            className="relative"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="relative flex justify-center"
           >
-            <img
-              src="/agent.jpg"
-              alt="Professional Insurance Agent"
-              className="w-full max-w-md rounded-3xl shadow-xl object-cover"
-            />
+            <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-sky-100 to-blue-100 dark:from-gray-700 dark:to-gray-800 border border-sky-200 dark:border-gray-600 p-4">
+              <div className="w-full h-full rounded-2xl bg-white dark:bg-gray-800 grid place-items-center text-center p-10">
+                <div>
+                  <div className="text-6xl mb-3">🛡️</div>
+                  <p className="text-xl font-semibold text-slate-800 dark:text-white">
+                    Trusted coverage, transparent advice.
+                  </p>
+                  <p className="text-slate-600 dark:text-gray-300 mt-2">
+                    Pan‑India partnerships • IRDAI‑compliant • Claims hand‑holding
+                  </p>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
