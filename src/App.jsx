@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Route, Routes, NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import emailjs from '@emailjs/browser'; // Import EmailJS library
 
 import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
@@ -53,6 +54,26 @@ function DarkModeToggle() {
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [email, setEmail] = useState(''); // State to hold the email input value
+
+  // Function to handle the form submission
+  const handleConsultationRequest = async (e) => {
+    e.preventDefault(); // Prevent page reload
+
+    const serviceId = "service_9i4xt48";
+    const templateId = "template_d2hkr7a";
+    const publicKey = "-x-Eacrv07WQd_a67";
+
+    try {
+      // The 'email' key must match the {{email}} variable in your EmailJS template
+      await emailjs.send(serviceId, templateId, { email: email }, publicKey);
+      alert('Your consultation request has been sent successfully!');
+      setEmail(''); // Clear the input field
+    } catch (error) {
+      console.error('Email sending failed:', error);
+      alert('Failed to send the request. Please try again later.');
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-gray-900 text-slate-900 dark:text-slate-200 transition-colors duration-300">
@@ -176,13 +197,16 @@ export default function App() {
                 </a>
               </li>
             </ul>
-            <form onSubmit={(e) => e.preventDefault()} className="flex flex-col gap-3">
+            <form onSubmit={handleConsultationRequest} className="flex flex-col gap-3">
               <input
                 type="email"
                 placeholder="Your email"
                 className="w-full px-4 py-2 rounded-xl border border-gray-300 dark:border-gray-600 bg-transparent focus:outline-none focus:ring-2 focus:ring-brand-500"
+                value={email} // Bind the value to the 'email' state
+                onChange={(e) => setEmail(e.target.value)} // Update state on change
+                required
               />
-              <button className="bg-brand-500 hover:bg-brand-600 text-white py-2 rounded-3xl font-medium mt-2">
+              <button type="submit" className="bg-brand-500 hover:bg-brand-600 text-white py-2 rounded-3xl font-medium mt-2">
                 Request Consultation
               </button>
             </form>
