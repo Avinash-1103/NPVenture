@@ -19,26 +19,31 @@ export default function ContactForm() {
   };
 
   const onSubmit = (e) => {
-    setStatus(""); // clear status; actual submission handled by iframe
+    // Keep Google Sheets submission working via form + iframe
+    setStatus("");
+    setTimeout(() => {
+      // Open WhatsApp after form submit
+      window.open(buildWhatsAppLink(), "_blank");
+    }, 500); // small delay ensures Google receives data
   };
 
   return (
-    <section className="section transition-colors duration-300 bg-gray-50 dark:bg-gray-900 py-12">
-      <div className="container mx-auto grid md:grid-cols-2 gap-10 items-start px-4">
-        {/* Form */}
+    <section className="py-12 px-4 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
+        {/* Left: Form */}
         <div>
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
             Contact Us
           </h2>
           <p className="text-gray-600 dark:text-gray-300 mt-2">
-            Fill the form and our agent will reach out. You can also email{" "}
+            Fill out the form below and our agent will reach out. You can also{" "}
             <a
-              className="text-teal-600 underline"
               href="mailto:npventure.official@gmail.com"
+              className="text-blue-600 dark:text-blue-400 underline"
             >
-              npventure.official@gmail.com
+              email us
             </a>{" "}
-            or call +91 90967 68607.
+            or call <span className="font-semibold">+91 90967 68607</span>.
           </p>
 
           <form
@@ -47,47 +52,57 @@ export default function ContactForm() {
             action="https://script.google.com/macros/s/AKfycbxhTla0o-jEBTKS4t9f09izZhQ1fBYTq3daiS51SZHCYOX1Q0S8yrcmnKCF1tkJ1Z8U/exec"
             onSubmit={onSubmit}
             target="hidden_iframe"
-            className="card p-6 mt-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 space-y-4 rounded-xl shadow hover:shadow-lg transition"
+            className="mt-6 p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow space-y-6"
           >
+            {/* --- Inputs remain same --- */}
+
             <div>
-              <label className="label text-gray-900 dark:text-white">Name</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                Name
+              </label>
               <input
                 name="name"
-                required
-                className="input dark:bg-gray-700 dark:text-white dark:placeholder-gray-300"
                 placeholder="Your full name"
+                required
+                className="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none dark:bg-gray-700 dark:text-white dark:placeholder-gray-300"
               />
             </div>
 
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
-                <label className="label text-gray-900 dark:text-white">Email</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Email
+                </label>
                 <input
                   type="email"
                   name="email"
-                  required
-                  className="input dark:bg-gray-700 dark:text-white dark:placeholder-gray-300"
                   placeholder="you@example.com"
+                  required
+                  className="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none dark:bg-gray-700 dark:text-white dark:placeholder-gray-300"
                 />
               </div>
               <div>
-                <label className="label text-gray-900 dark:text-white">Phone</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Phone
+                </label>
                 <input
                   type="tel"
                   name="phone"
-                  required
-                  className="input dark:bg-gray-700 dark:text-white dark:placeholder-gray-300"
                   placeholder="+91 XXXXX XXXXX"
+                  required
+                  className="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none dark:bg-gray-700 dark:text-white dark:placeholder-gray-300"
                 />
               </div>
             </div>
 
             <div>
-              <label className="label text-gray-900 dark:text-white">Insurance Type</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                Insurance Type
+              </label>
               <select
                 name="insuranceType"
-                className="input dark:bg-gray-700 dark:text-white dark:placeholder-gray-300"
                 defaultValue="Choose Insurance Type"
+                className="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none dark:bg-gray-700 dark:text-white dark:placeholder-gray-300"
               >
                 <option disabled>Choose Insurance Type</option>
                 <option>Life</option>
@@ -101,67 +116,65 @@ export default function ContactForm() {
             </div>
 
             <div>
-              <label className="label text-gray-900 dark:text-white">Message</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                Message
+              </label>
               <textarea
                 name="message"
-                rows="4"
-                className="input dark:bg-gray-700 dark:text-white dark:placeholder-gray-300"
                 placeholder="Tell us about your requirement"
+                rows="4"
+                className="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none dark:bg-gray-700 dark:text-white dark:placeholder-gray-300"
               ></textarea>
             </div>
 
+            {/* --- Single Button --- */}
             <button
               type="submit"
-              className="btn btn-primary w-full bg-teal-500 hover:bg-teal-600 text-white py-3 rounded-lg transition"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg py-3 transition"
             >
               Send Message
             </button>
 
-            <div className="flex items-center my-2">
-              <hr className="flex-grow border-gray-300 dark:border-gray-600" />
-              <span className="px-2 text-gray-500 dark:text-gray-400 text-sm">OR</span>
-              <hr className="flex-grow border-gray-300 dark:border-gray-600" />
-            </div>
-
-            <button
-              type="button"
-              onClick={() => window.open(buildWhatsAppLink(), "_blank")}
-              className="btn bg-green-600 hover:bg-green-700 text-white w-full mt-2 text-center block rounded-lg py-2"
-            >
-              Contact on WhatsApp
-            </button>
-
-            {status && <p className="text-green-600 mt-2 text-center">{status}</p>}
+            {status && (
+              <p className="text-green-600 text-sm mt-2">{status}</p>
+            )}
           </form>
 
-          {/* Hidden iframe to prevent page reload */}
+          {/* Hidden iframe */}
           <iframe
             name="hidden_iframe"
             style={{ display: "none" }}
-            onLoad={() => setStatus("Message sent!")}
+            onLoad={() => setStatus("Message sent !")}
           />
-
-          {/* Office Info */}
-          <div className="card p-6 mt-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow hover:shadow-lg transition">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Office</h3>
-            <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
-              Shop No.7, Payal Apartment, Bharti Vidyapeeth Dattanagar Road, Katraj Ambegaon BK Pune, MH
-              <br />
-              Phone: +91 90967 68607
-            </p>
-          </div>
         </div>
 
-        {/* Map */}
-        <div className="card p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow hover:shadow-lg transition">
-          <iframe
-            title="Map"
-            className="w-full h-80 rounded-xl"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=73.758%2C18.548%2C73.82%2C18.575&layer=mapnik"
-          />
-          <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
-            Approximate service location — pan-India support available.
-          </p>
+        {/* Right: Office Info + Map stays same */}
+        <div className="mt-6 md:mt-12 space-y-6 ">
+
+          <div className="p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow ">
+            <iframe
+              title="Map"
+              className="w-full h-80 rounded-xl"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=73.758%2C18.548%2C73.82%2C18.575&layer=mapnik"
+            />
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+              Approximate service location — pan-India support available.
+            </p>
+          </div>
+
+          <div className="p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              Our Office
+            </h3>
+            <p className="text-gray-600 dark:text-gray-300 mt-2 text-sm leading-relaxed">
+              Shop No.7, Payal Apartment, Bharti Vidyapeeth Dattanagar Road,
+              Katraj, Ambegaon BK, Pune, MH
+              <br />
+              Phone: +91 90967 68607
+              <br />
+              Email: npventure.official@gmail.com
+            </p>
+          </div>
         </div>
       </div>
     </section>
