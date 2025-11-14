@@ -1,8 +1,12 @@
 import React, { useRef, useState } from "react";
+import emailjs from "@emailjs/browser"; // <<< EMAILJS
 
 export default function ContactForm() {
   const formRef = useRef(null);
   const [status, setStatus] = useState("");
+
+  // <<< EMAILJS INIT
+  emailjs.init("-x-Eacrv07WQd_a67"); // leave placeholder, replace later
 
   const buildWhatsAppLink = () => {
     const base = "https://wa.me/919096768607";
@@ -19,12 +23,31 @@ export default function ContactForm() {
   };
 
   const onSubmit = (e) => {
-    // Keep Google Sheets submission working via form + iframe
     setStatus("");
+
+    // <<< EMAILJS SEND SECTION
+    const formData = new FormData(formRef.current);
+    const payload = Object.fromEntries(formData.entries());
+
+    emailjs.send(
+      "service_l932kxx", // placeholder
+      "template_mell8kc", // placeholder
+      {
+        name: payload.name,
+        email: payload.email,
+        phone: payload.phone,
+        insuranceType: payload.insuranceType,
+        message: payload.message,
+        time: new Date().toLocaleString(),
+      }
+    )
+      .then(() => console.log("Email Sent"))
+      .catch((err) => console.error("EmailJS Error:", err));
+    // <<< END EMAILJS
+
     setTimeout(() => {
-      // Open WhatsApp after form submit
       window.open(buildWhatsAppLink(), "_blank");
-    }, 500); // small delay ensures Google receives data
+    }, 500);
   };
 
   return (
@@ -127,7 +150,6 @@ export default function ContactForm() {
               ></textarea>
             </div>
 
-            {/* --- Single Button --- */}
             <button
               type="submit"
               className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg py-3 transition"
@@ -140,7 +162,6 @@ export default function ContactForm() {
             )}
           </form>
 
-          {/* Hidden iframe */}
           <iframe
             name="hidden_iframe"
             style={{ display: "none" }}
@@ -150,7 +171,6 @@ export default function ContactForm() {
 
         {/* Right: Office Info + Map stays same */}
         <div className="mt-6 md:mt-12 space-y-6 ">
-
           <div className="p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow ">
             <iframe
               title="Map"
