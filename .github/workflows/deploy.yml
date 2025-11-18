@@ -31,7 +31,7 @@ jobs:
 
       # ✅ Preserve CNAME file
       - name: Add CNAME
-        run: echo "www.scriptinglab.online" > ./dist/CNAME
+        run: echo "scriptinglab.online" > ./dist/CNAME
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
